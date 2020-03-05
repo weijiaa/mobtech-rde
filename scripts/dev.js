@@ -19,16 +19,16 @@ portfinder.getPortPromise().then(server);
 spinner.stop()
 
 function server(port) {
-  // webpackDevConfig.plugins.push(new friendlyErrorsWebpackPlugin({
-  //   compilationSuccessInfo: {
-  //     messages: [
-  //       `You can now view ${path.basename(path.resolve(__dirname, '../'))} in the browser.
+  webpackDevConfig.plugins.push(new friendlyErrorsWebpackPlugin({
+    compilationSuccessInfo: {
+      messages: [
+        `You can now view ${path.basename(path.resolve(__dirname, '../'))} in the browser.
 
-  //       Local:            http://${'0.0.0.0'}:${port}
-  //       On Yuer NetWork:  http://${getIPAdress()}:${port}`,
-  //     ]
-  //   }
-  // }));
+        Local:            http://${'0.0.0.0'}:${port}
+        On Yuer NetWork:  http://${getIPAdress()}:${port}`,
+      ]
+    }
+  }));
   const compiler = webpack(webpackDevConfig);
   new webpackDevServer(compiler, webpackDevServerConfig).listen(port);
 }
