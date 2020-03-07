@@ -1,7 +1,10 @@
 module.exports = function (api) {
   api.cache(true);
 
-  const presets = ["@babel/preset-env"];
+  const presets = [
+    '@babel/preset-react',
+    "@babel/preset-env"
+  ];
 
   const plugins = [
     ["@babel/plugin-transform-runtime", { "corejs": 2 }],

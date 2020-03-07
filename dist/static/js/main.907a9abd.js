@@ -86,14 +86,48 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/react-dom/index.js":
+/*!************************************************************************************!*\
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference reactDom_dll_ ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = (__webpack_require__(/*! dll-reference reactDom_dll_ */ \"dll-reference reactDom_dll_\"))(5);\n\n//# sourceURL=webpack:///delegated_./node_modules/react-dom/index.js_from_dll-reference_reactDom_dll_?");
+
+/***/ }),
+
+/***/ "./node_modules/react/index.js":
+/*!********************************************************************************!*\
+  !*** delegated ./node_modules/react/index.js from dll-reference reactDom_dll_ ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = (__webpack_require__(/*! dll-reference reactDom_dll_ */ \"dll-reference reactDom_dll_\"))(1);\n\n//# sourceURL=webpack:///delegated_./node_modules/react/index.js_from_dll-reference_reactDom_dll_?");
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nfunction App() {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"App\");\n}\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('app'));\n\n//# sourceURL=webpack:///./src/main.js?");
+
+/***/ }),
+
+/***/ "dll-reference reactDom_dll_":
+/*!********************************!*\
+  !*** external "reactDom_dll_" ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("module.exports = reactDom_dll_;\n\n//# sourceURL=webpack:///external_%22reactDom_dll_%22?");
 
 /***/ })
 

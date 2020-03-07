@@ -1,14 +1,29 @@
+const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const manifest = require('../dll/manifest.json');
+const DLLlBuildJSON = require('../dll/build.config.json');
+
+const copyFilePaths = fs
+  .readdirSync(path.resolve(__dirname, '../public'))
+  .filter(filename => filename !== 'index.html');
 
 module.exports = {
-  mode: 'development',
   entry: {
     main: path.resolve(__dirname, '../src/main.js')
   },
   output: {
     filename: 'static/js/[name].[contenthash:8].js',
     path: path.resolve(__dirname, '../dist')
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    },
+    modules: [path.resolve(__dirname, '../node_modules')],
+    extensions: ['.json', '.js', '.less', '.css']
   },
   module: {
     rules: [
@@ -61,8 +76,24 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin(
+      [
+        {
+          from: path.resolve(__dirname, `../dll/vendor`),
+          to: 'vendor'
+        },
+        ...copyFilePaths.map(filename => {
+          return {
+            from: path.resolve(__dirname, `../public/${filename}`),
+            to: filename
+          }
+        })
+      ]
+    ),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../public/index.html')
-    })
+      template: path.resolve(__dirname, '../public/index.html'),
+      DLLlBuildJSON
+    }),
+    new webpack.DllReferencePlugin({ manifest })
   ]
 }

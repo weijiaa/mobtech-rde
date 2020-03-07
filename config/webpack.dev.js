@@ -5,6 +5,7 @@ module.exports = webpackMerge(
   webpackCommonConfig,
   {
     mode: 'development',
+    devtool: 'cheap-module-source-map',
     output: {
       filename: 'static/js/[name].js'
     }

@@ -1,5 +1,3 @@
-'use strict';
-
 const os   = require('os');
 const ora  = require('ora');
 const path = require('path');

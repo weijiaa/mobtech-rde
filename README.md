@@ -18,5 +18,9 @@
 |@babel/runtime-corejs2|提供polyfill|
 |@babel/plugin-transform-runtime|不需要在文件开头import相关polyfill|
 |@babel/plugin-proposal-decorators|解释装饰器|
-|||
-
+|@babel/preset-react|所有React插件的Babel预设|
+|assets-webpack-plugin|根据资源路径发出json|
+|copy-webpack-plugin|打包前copy文件|
+|ora|终端交互插件|
+|chalk|终端输出颜色插件|
+|portfinder|端口自增插件|
