@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'antd';
+import 'antd/dist/antd.css';
 
 function App() {
   return (
@@ -8,4 +9,4 @@ function App() {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById('app'));
