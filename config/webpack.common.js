@@ -83,7 +83,7 @@ module.exports = {
     new CopyWebpackPlugin(
       [
         {
-          from: path.resolve(__dirname, `../dll/vendor`),
+          from: path.resolve(__dirname, '../dll/vendor'),
           to: 'vendor'
         },
         ...copyFilePaths.map(filename => {
