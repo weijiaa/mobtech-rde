@@ -4,6 +4,8 @@ const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const { dependencies } = require('../package.json');
 
+process.env.NODE_ENV = 'production';
+
 module.exports = {
   mode: 'production',
   performance: {

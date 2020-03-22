@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackCommonConfig = require('./webpack.common.js');
 
+process.env.NODE_ENV = 'development';
+
 module.exports = webpackMerge(
   webpackCommonConfig,
   {
