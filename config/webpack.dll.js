@@ -11,8 +11,8 @@ module.exports = {
     vendor: Object.keys(dependencies || {})
   },
   output: {
-    path: path.resolve(__dirname, '../dll'),
-    filename: 'vendor/[name].dll.[contenthash:8].js',
+    path: path.resolve(__dirname, '../dll/vendor'),
+    filename: '[name].dll.[contenthash:8].js',
     library: '[name]_dll_'
   },
   plugins: [

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'antd';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
+import './main.less';
 
 function App() {
   return (
