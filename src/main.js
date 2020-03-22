@@ -8,6 +8,8 @@ import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import './main.less';
 
+console.log(NODE_ENV);
+
 function App() {
   return (
     <div><Button>按钮</Button></div>

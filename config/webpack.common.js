@@ -6,9 +6,18 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const manifest = require('../dll/manifest.json');
 const DLLlBuildJSON = require('../dll/build.config.json');
 
-const copyFilePaths = fs
-  .readdirSync(path.resolve(__dirname, '../public'))
-  .filter(filename => filename !== 'index.html');
+const copyFilePaths = (
+  fs.readdirSync(path.resolve(__dirname, '../public'))
+    .filter(filename => filename !== 'index.html')
+);
+
+const outputPath = (function (env) {
+  switch(env) {
+    case 'dev': return '../dist-dev';
+    case 'test': return '../dist-test';
+    case 'prod': return '../dist-prod';
+  }
+})(process.env.NODE_ENV);
 
 module.exports = {
   entry: {
@@ -16,7 +25,7 @@ module.exports = {
   },
   output: {
     filename: 'static/js/[name].[contenthash:8].js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, outputPath)
   },
   resolve: {
     alias: {
@@ -72,6 +81,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    }),
     new CopyWebpackPlugin(
       [
         {

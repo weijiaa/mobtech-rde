@@ -23,6 +23,7 @@
 |copy-webpack-plugin|打包前copy文件|
 |mini-css-extract-plugin|抽离css|
 |optimize-css-assets-webpack-plugin|压缩css|
+|cross-env|设置process.env的变量|
 |ora|终端交互插件|
 |chalk|终端输出颜色插件|
 |portfinder|端口自增插件|
