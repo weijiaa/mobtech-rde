@@ -21,7 +21,8 @@
 |@babel/preset-react|所有React插件的Babel预设|
 |assets-webpack-plugin|根据资源路径发出json|
 |copy-webpack-plugin|打包前copy文件|
-|mini-css-extract-plugin||
+|mini-css-extract-plugin|抽离css|
+|optimize-css-assets-webpack-plugin|压缩css|
 |ora|终端交互插件|
 |chalk|终端输出颜色插件|
 |portfinder|端口自增插件|

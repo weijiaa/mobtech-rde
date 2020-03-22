@@ -1,4 +1,4 @@
-const path    = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
@@ -6,7 +6,9 @@ const { dependencies } = require('../package.json');
 
 module.exports = {
   mode: 'production',
-  devtool: 'source-map',
+  performance: {
+    hints: false
+  },
   entry: {
     vendor: Object.keys(dependencies || {})
   },

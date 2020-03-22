@@ -1,12 +1,19 @@
 const webpackMerge = require('webpack-merge');
 const webpackCommonConfig = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = webpackMerge(
   webpackCommonConfig,
   {
     mode: 'production',
+    performance: {
+      hints: false
+    },
+    output: {
+      filename: 'static/js/[name].[contenthash:8].js'
+    },
     module: {
       rules: [
         {
@@ -28,7 +35,8 @@ module.exports = webpackMerge(
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: 'static/style/[name].[contenthash:8].css',
-      })
+      }),
+      new OptimizeCssAssetsWebpackPlugin()
     ]
   }
 )

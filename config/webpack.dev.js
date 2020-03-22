@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackCommonConfig = require('./webpack.common.js');
 
@@ -8,6 +9,9 @@ module.exports = webpackMerge(
     devtool: 'cheap-module-source-map',
     output: {
       filename: 'static/js/[name].js'
-    }
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
   }
 )
