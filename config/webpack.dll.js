@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
+const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 const { dependencies } = require('../package.json');
 
 module.exports = {

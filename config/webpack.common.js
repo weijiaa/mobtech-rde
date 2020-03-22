@@ -32,7 +32,7 @@ module.exports = {
       '@': path.resolve(__dirname, '../src')
     },
     modules: [path.resolve(__dirname, '../node_modules')],
-    extensions: ['.json', '.js', '.less', '.css']
+    extensions: ['.json', '.js', '.jsx', '.less', '.css']
   },
   module: {
     rules: [
@@ -43,10 +43,6 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      },
-      {
-        test: /\.(le|c)ss$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,

@@ -26,6 +26,7 @@ module.exports = webpackMerge(
               }
             },
             'css-loader',
+            'postcss-loader',
             'less-loader'
           ]
         },

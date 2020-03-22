@@ -10,6 +10,14 @@ module.exports = webpackMerge(
     output: {
       filename: 'static/js/[name].js'
     },
+    module: {
+      rules: [
+        {
+          test: /\.(le|c)ss$/,
+          use: [ 'style-loader', 'css-loader', 'postcss-loader', 'less-loader' ]
+        },
+      ]
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin()
     ]
