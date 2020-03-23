@@ -17,7 +17,7 @@ const outputPath = (function (env) {
     case 'test': return '../dist-test';
     case 'prod': return '../dist-prod';
   }
-})(process.env.RUN_ENV);
+})(process.env.RUNTIME_ENV);
 
 module.exports = {
   entry: {
@@ -78,7 +78,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      RUN_ENV: JSON.stringify(process.env.RUN_ENV)
+      RUNTIME_ENV: JSON.stringify(process.env.RUNTIME_ENV)
     }),
     new CopyWebpackPlugin(
       [

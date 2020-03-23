@@ -4,12 +4,12 @@
   "description": "mobtech React开发环境",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env RUN_ENV=dev node scripts/dev.js",
-    "dev-test": "cross-env RUN_ENV=test node scripts/dev.js",
-    "dev-prod": "cross-env RUN_ENV=prod node scripts/dev.js",
-    "build": "cross-env RUN_ENV=dev node scripts/build.js",
-    "build-test": "cross-env RUN_ENV=test node scripts/build.js",
-    "build-prod": "cross-env RUN_ENV=prod node scripts/build.js",
+    "dev": "cross-env RUNTIME_ENV=dev node scripts/dev.js",
+    "dev-test": "cross-env RUNTIME_ENV=test node scripts/dev.js",
+    "dev-prod": "cross-env RUNTIME_ENV=prod node scripts/dev.js",
+    "build": "cross-env RUNTIME_ENV=dev node scripts/build.js",
+    "build-test": "cross-env RUNTIME_ENV=test node scripts/build.js",
+    "build-prod": "cross-env RUNTIME_ENV=prod node scripts/build.js",
     "dll": "node scripts/dll.js"
   },
   "author": "weijiaa",
