@@ -23,9 +23,9 @@ yarn run build       // 以开发环境打包代码 打包后文件目录 dist-d
 yarn run build-test  // 以测试环境打包代码 打包后文件目录 dist-test
 yarn run build-prod  // 以生产环境打包代码 打包后文件目录 dist-prod
 # OR
-npm run dev
-npm run dev-test
-npm run dev-prod
+npm run build
+npm run build-test
+npm run build-prod
 ```
 
 #### 打包第三方库

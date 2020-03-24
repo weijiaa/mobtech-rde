@@ -7,5 +7,6 @@ module.exports = {
   noInfo: true,
   compress: true,
   clientLogLevel: 'none',
-  historyApiFallback: true
+  historyApiFallback: true,
+  disableHostCheck: true,
 }
