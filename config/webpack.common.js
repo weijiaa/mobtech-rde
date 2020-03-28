@@ -1,25 +1,22 @@
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const manifest = require('../dll/manifest.json');
 const DLLlBuildJSON = require('../dll/build.config.json');
+const { getFiles } = require('./utils');
 
-const copyFilePaths = (
-  fs.readdirSync(path.resolve(__dirname, '../public'))
-    .filter(filename => filename !== 'index.html')
-);
+const copyFilePaths = getFiles(path.resolve(__dirname, '../public'), ['index.html']);
 
 const outputPath = (function (env) {
   switch(env) {
-    case 'dev': return '../dist-dev';
+    case 'dev':  return '../dist-dev';
     case 'test': return '../dist-test';
     case 'prod': return '../dist-prod';
   }
-})(process.env.RUNTIME_ENV);
+})(process.env.RUNTIME_ENV || 'dev');
 
-module.exports = {
+const webpackConfig = {
   entry: {
     main: path.resolve(__dirname, '../src/main.js')
   },
@@ -80,20 +77,18 @@ module.exports = {
     new webpack.DefinePlugin({
       RUNTIME_ENV: JSON.stringify(process.env.RUNTIME_ENV)
     }),
-    new CopyWebpackPlugin(
-      [
-        {
-          from: path.resolve(__dirname, '../dll/vendor'),
-          to: 'vendor'
-        },
-        ...copyFilePaths.map(filename => {
-          return {
-            from: path.resolve(__dirname, `../public/${filename}`),
-            to: filename
-          }
-        })
-      ]
-    ),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../dll/vendor'),
+        to: 'vendor'
+      },
+      ...copyFilePaths.map(filename => {
+        return {
+          from: path.resolve(__dirname, `../public/${filename}`),
+          to: filename
+        }
+      })
+    ]),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
       DLLlBuildJSON
@@ -101,3 +96,5 @@ module.exports = {
     new webpack.DllReferencePlugin({ manifest })
   ]
 }
+
+module.exports = webpackConfig;

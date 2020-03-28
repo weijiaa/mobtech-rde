@@ -4,7 +4,20 @@ const webpackCommonConfig = require('./webpack.common.js');
 
 process.env.NODE_ENV = 'development';
 
-module.exports = webpackMerge(
+const devServer = {
+  port: 3000,
+  host: '0.0.0.0',
+  hot: true,
+  quiet: true,
+  inline: true,
+  noInfo: true,
+  compress: true,
+  clientLogLevel: 'none',
+  historyApiFallback: true,
+  disableHostCheck: true,
+}
+
+const webpackConfig = webpackMerge(
   webpackCommonConfig,
   {
     mode: 'development',
@@ -12,6 +25,7 @@ module.exports = webpackMerge(
     output: {
       filename: 'static/js/[name].js'
     },
+    devServer,
     module: {
       rules: [
         {
@@ -24,4 +38,6 @@ module.exports = webpackMerge(
       new webpack.HotModuleReplacementPlugin()
     ]
   }
-)
+);
+
+module.exports = webpackConfig;

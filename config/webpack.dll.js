@@ -6,7 +6,7 @@ const { dependencies } = require('../package.json');
 
 process.env.NODE_ENV = 'production';
 
-module.exports = {
+const webpackConfig = {
   mode: 'production',
   performance: {
     hints: false
@@ -31,3 +31,5 @@ module.exports = {
     })
   ]
 }
+
+module.exports = webpackConfig;

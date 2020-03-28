@@ -6,7 +6,7 @@ const portfinder = require('portfinder');
 const webpackDevServer = require('webpack-dev-server');
 const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpackDevConfig = require('../config/webpack.dev');
-const webpackDevServerConfig = require('../config/webpack.dev.server');
+const devServer = webpackDevConfig.devServer;
 
 function getIPAdress() {
   let address = '127.0.0.1';
@@ -39,13 +39,13 @@ function server(port) {
     }
   }));
   const compiler = webpack(webpackDevConfig);
-  new webpackDevServer(compiler, webpackDevServerConfig).listen(port);
+  new webpackDevServer(compiler, devServer).listen(port);
 }
 
 const spinner = ora('启动中...');
 spinner.start();
 
-portfinder.basePort = webpackDevServerConfig.port;
+portfinder.basePort = devServer.port;
 portfinder.getPortPromise().then(server);
 
 spinner.stop()
