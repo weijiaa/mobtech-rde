@@ -7,8 +7,16 @@ const fs = require('fs');
  * @returns {Array}
 */
 function getFiles(dirpath, excludes) {
-  return fs.readdirSync(dirpath)
-           .filter(filename => !excludes.includes(filename));
+  let fileList = [];
+
+  try {
+    fileList = fs.readdirSync(dirpath)
+                .filter(filename => !excludes.includes(filename));
+  } catch (error) {
+    return [];
+  }
+  
+  return fileList;
 }
 
 exports.getFiles = getFiles;
