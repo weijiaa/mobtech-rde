@@ -28,7 +28,6 @@ npm run dll
 
 #### 预打包
 ```
-// 预先打包公共代码
 yarn run build-public
 # OR
 npm run build-public
