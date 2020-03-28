@@ -6,7 +6,7 @@ const manifest = require('../dll/manifest.json');
 const DLLlBuildJSON = require('../dll/build.config.json');
 const { getFiles } = require('./utils');
 
-const copyFilePaths = getFiles(path.resolve(__dirname, '../public'), ['index.html']);
+const copyFilePaths = getFiles(path.resolve(__dirname, '../public_build'), ['index.html']);
 
 const outputPath = (function (env) {
   switch(env) {
@@ -84,13 +84,13 @@ const webpackConfig = {
       },
       ...copyFilePaths.map(filename => {
         return {
-          from: path.resolve(__dirname, `../public/${filename}`),
+          from: path.resolve(__dirname, `../public_build/${filename}`),
           to: filename
         }
       })
     ]),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../public/index.html'),
+      template: path.resolve(__dirname, '../public_build/index.html'),
       DLLlBuildJSON
     }),
     new webpack.DllReferencePlugin({ manifest })

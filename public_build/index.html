@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobTech</title>
+</head>
+<body>
+  <div id="app"></div>
+  
+  
+  <% for (var js in htmlWebpackPlugin.options.DLLlBuildJSON) {
+    %>
+      <script src="vendor/<%= htmlWebpackPlugin.options.DLLlBuildJSON[js].js %>"></script>
+    <%
+  } %>
+
+
+<script type="text/javascript" src="static/js/main.ae8a0a63.js"></script></body>
+</html>

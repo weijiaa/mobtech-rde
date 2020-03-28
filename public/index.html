@@ -8,12 +8,7 @@
 <body>
   <div id="app"></div>
   
-  <!-- dll build -->
-  <% for (var js in htmlWebpackPlugin.options.DLLlBuildJSON) {
-    %>
-      <script src="vendor/<%= htmlWebpackPlugin.options.DLLlBuildJSON[js].js %>"></script>
-    <%
-  } %>
+  <%= htmlWebpackPlugin.options.codeString %>
 
 </body>
 </html>
