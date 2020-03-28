@@ -10,7 +10,7 @@ const { getFiles } = require('./utils');
 process.env.NODE_ENV = 'production';
 
 const copyFilePaths = getFiles(path.resolve(__dirname, '../public'), ['index.html']);
-const codeString =  `
+const codeString = `
   <% for (var js in htmlWebpackPlugin.options.DLLlBuildJSON) {
     %>
       <script src="vendor/<%= htmlWebpackPlugin.options.DLLlBuildJSON[js].js %>"></script>

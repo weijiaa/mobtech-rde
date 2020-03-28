@@ -10,9 +10,9 @@ const copyFilePaths = getFiles(path.resolve(__dirname, '../public_build'), ['ind
 
 const outputPath = (function (env) {
   switch(env) {
-    case 'dev':  return '../dist-dev';
+    case 'dev': return '../dist-dev';
     case 'test': return '../dist-test';
-    case 'prod': return '../dist-prod';
+    case 'prod': return '../dist';
   }
 })(process.env.RUNTIME_ENV || 'dev');
 
