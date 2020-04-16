@@ -46,7 +46,7 @@ npm run build-prod
 
 ## 目录结构
 ```
-├── config                     // 配置文件夹
+├── config                    // 配置文件夹
 │   ├── webpack.build.js      // webpack 打包配置
 │   ├── webpack.common.js     // webpack 公共配置
 │   ├── webpack.dev.js        // webpack 开发环境配置
