@@ -10,6 +10,7 @@
     "build": "cross-env RUNTIME_ENV=dev node scripts/build.js",
     "build-test": "cross-env RUNTIME_ENV=test node scripts/build.js",
     "build-prod": "cross-env RUNTIME_ENV=prod node scripts/build.js",
+    "build-public": "node scripts/build.public.js",
     "dll": "node scripts/dll.js"
   },
   "author": "weijiaa",

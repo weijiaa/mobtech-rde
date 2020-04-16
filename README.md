@@ -1,4 +1,4 @@
-## 使用
+## 启动与打包
 
 #### 安装依赖
 ```
@@ -6,6 +6,7 @@ yarn
 # OR
 npm install
 ```
+
 #### 启动项目 
 ```
 yarn run dev         // 以开发环境启用项目
@@ -17,17 +18,6 @@ npm run dev-test
 npm run dev-prod
 ```
 
-#### 项目打包
-```
-yarn run build       // 以开发环境打包代码 打包后文件目录 dist-dev
-yarn run build-test  // 以测试环境打包代码 打包后文件目录 dist-test
-yarn run build-prod  // 以生产环境打包代码 打包后文件目录 dist-prod
-# OR
-npm run build
-npm run build-test
-npm run build-prod
-```
-
 #### 打包第三方库
 ```
 // 项目中有添加新的项目依赖包 执行一次这个命令，可以提高热更新和打包速度
@@ -36,40 +26,64 @@ yarn run dll
 npm run dll
 ```
 
+#### 预打包
+```
+yarn run build-public
+# OR
+npm run build-public
+```
+
+#### 项目打包
+```
+yarn run build       // 以开发环境打包代码 打包后文件目录 dist-dev
+yarn run build-test  // 以测试环境打包代码 打包后文件目录 dist-test
+yarn run build-prod  // 以生产环境打包代码 打包后文件目录 dist
+# OR
+npm run build
+npm run build-test
+npm run build-prod
+```
+
 ## 目录结构
 ```
-├── config   // 配置文件夹
+├── config                     // 配置文件夹
 │   ├── webpack.build.js      // webpack 打包配置
 │   ├── webpack.common.js     // webpack 公共配置
 │   ├── webpack.dev.js        // webpack 开发环境配置
 │   ├── webpack.dev.server.js // webpack-dev-server 配置
 │   └── webpack.dll.js        // webpack 打包dll配置
-├── dll     // 动态链接库
+├── dll                       // 动态链接库
 │   ├── ...
 │   ├── ...
 │   └── ...
-├── public  // 静态公共资源文件夹
-│   ├── ...
-│   └── ...
-├── scripts // 脚本文件夹
+├── public        // 静态公共资源文件夹
 │   ├── ...
 │   ├── ...
 │   └── ...
-├── src     // 业务源代码文件夹
+├── public-build  // 预打包静态公共资源文件夹
 │   ├── ...
 │   ├── ...
 │   └── ...
-├── .babelrc.js      // babel配置文件
-├── .browserslistrc  // 指定css兼容浏览器配置文件
-├── .gitignore       // git过滤文件
-├── postcss.config.js   // css预处理插件postcss配置文件
+├── scripts       // 脚本文件夹
+│   ├── ...
+│   ├── ...
+│   └── ...
+├── src           // 业务源代码文件夹
+│   ├── main.js         // 入口文件
+│   ├── main.public.js  // 预打包入口文件
+│   ├── ...
+│   └── ...
+├── .babelrc.js         // babel配置文件
+├── .browserslistrc     // 指定css兼容浏览器配置文件
+├── .gitignore          // git过滤文件
+├── postcss.config.js    // css预处理插件postcss配置文件
 ├── ...
 ├── ...
 └── ...
 ```
 
 ## 项目依赖描述
-|依赖包|描述|
+|开发依赖包|描述|
 |--|--|
 |@babel/core|babel核心API包|
 |@babel/plugin-proposal-decorators|解释装饰器|
