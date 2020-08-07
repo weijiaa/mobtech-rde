@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const manifest = require('../dll/manifest.json');
 const DLLlBuildJSON = require('../dll/build.config.json');
-const { getFiles } = require('./utils');
+const { getFiles } = require('../utils');
 
 const copyFilePaths = getFiles(path.resolve(__dirname, '../public_build'), ['index.html']);
 
@@ -36,10 +36,14 @@ const webpackConfig = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        include: path.resolve(__dirname, '../src'),
+        include: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../docServer')],
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.md$/,
+        use: 'raw-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,

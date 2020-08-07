@@ -1,0 +1,25 @@
+.head-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  height: 64px;
+  line-height: 64px;
+  &-item {
+    float: left;
+    padding: 0 6px;
+    margin: 0 10px;
+    border-top: 2px solid transparent;
+    color: #666;
+    &:hover {
+      border-top: 2px solid #009A9E;
+      color: #009A9E;
+      cursor: pointer;
+    }
+  }
+  .active-item {
+    border-top: 2px solid #009A9E;
+    color: #009A9E;
+    cursor: default;
+  }
+}

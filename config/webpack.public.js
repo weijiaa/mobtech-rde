@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackCommonConfig = require('./webpack.common');
 const manifest = require('../dll/manifest.json');
-const { getFiles } = require('./utils');
+const { getFiles } = require('../utils');
 
 process.env.NODE_ENV = 'production';
 

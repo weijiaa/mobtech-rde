@@ -26,11 +26,19 @@ yarn run dll
 npm run dll
 ```
 
-#### 预打包
+#### 打包公共代码
 ```
 yarn run build-public
 # OR
 npm run build-public
+```
+
+#### 预打包
+```
+// 项目中有添加新的项目依赖包或者新添加公共代买（等于npm run dll & npm run build-public）
+yarn run build-pre
+# OR
+npm run build-pre
 ```
 
 #### 项目打包
@@ -76,7 +84,7 @@ npm run build-prod
 ├── .babelrc.js         // babel配置文件
 ├── .browserslistrc     // 指定css兼容浏览器配置文件
 ├── .gitignore          // git过滤文件
-├── postcss.config.js    // css预处理插件postcss配置文件
+├── postcss.config.js   // css预处理插件postcss配置文件
 ├── ...
 ├── ...
 └── ...

@@ -8,11 +8,15 @@ const webpackDevConfig = require('../config/webpack.dev');
 const devServer = webpackDevConfig.devServer;
 const { getIPAdress } = require('../utils');
 
+webpackDevConfig.entry = {
+  main: path.resolve(__dirname, '../docServer/main.js')
+}
+
 function server(port) {
   webpackDevConfig.plugins.push(new friendlyErrorsWebpackPlugin({
     compilationSuccessInfo: {
       messages: [
-        `You can now view ${path.basename(path.resolve(__dirname, '../'))} in the browser.
+        `You can now view ${path.basename(path.resolve(__dirname, '../'))} doc in the browser.
 
         Local:            http://${'0.0.0.0'}:${port}
         On Yuer NetWork:  http://${getIPAdress()}:${port}`,
