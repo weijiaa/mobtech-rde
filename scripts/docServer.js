@@ -3,10 +3,33 @@ const path = require('path');
 const webpack = require('webpack');
 const portfinder = require('portfinder');
 const webpackDevServer = require('webpack-dev-server');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpackDevConfig = require('../config/webpack.dev');
+const docConfig = require('../doc.config');
 const devServer = webpackDevConfig.devServer;
 const { getIPAdress } = require('../utils');
+
+const componentsPaths = (docConfig.components || []).map(p => path.resolve('./', p));
+
+webpackDevConfig.plugins.push(
+  new webpack.DefinePlugin({
+    COMPONENTS_PATHS: JSON.stringify(componentsPaths)
+  })
+);
+
+webpackDevConfig.plugins.push(
+  new CopyWebpackPlugin(
+    componentsPaths.map(p => (
+      {
+        from: p,
+        to: p.split('/').pop()
+      }
+    ))
+  )
+);
+
+console.log(docConfig.components);
 
 webpackDevConfig.entry = {
   main: path.resolve(__dirname, '../docServer/main.js')

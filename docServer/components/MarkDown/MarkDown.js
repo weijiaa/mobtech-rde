@@ -1,18 +1,34 @@
-import React, { useRef, useLayoutEffect } from 'react';
-import { CodePreviewer, MdPreviewer, PreviewLayout } from "react-code-previewer";
-
+import React, { useEffect, useState } from 'react';
+import marked from 'marked';
+import hljs from 'highlight.js';
+import './index.less';
 
 function MarkDown(props) {
   const { source } = props;
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: true,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false,
+      highlight: function(code) {
+          return hljs.highlightAuto(code).value;
+      },
+    });
+
+    setContent(marked(source))
+  }, [])
 
   return (
-    <PreviewLayout>
-      {/* <MdPreviewer md={source}></MdPreviewer>
-      <CodePreviewer code={source} showCode={true}>
-        your-component-here
-      </CodePreviewer> */}
-      <MdPreviewer md={source}></MdPreviewer>
-    </PreviewLayout>
+    <div className="markdown-wrap">
+      <div  dangerouslySetInnerHTML={{ __html: content }}></div>
+    </div>
   )
 }
 

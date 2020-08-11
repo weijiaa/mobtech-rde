@@ -11,6 +11,7 @@ function importDir(requireComponent) {
       if(dirs.length === 0) {
         pointer[fileNode] = {
           ...requireComponent(filename),
+          path: filename.slice(2),
           isComponent: true
         }
         break;

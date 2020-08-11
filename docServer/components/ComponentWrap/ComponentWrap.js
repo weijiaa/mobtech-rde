@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactMarkDown from 'react-markdown';
+import { MarkDown } from '../index';
 
 function ComponentWrap(props) {
   const { module: Module, readme } = props;
@@ -18,38 +18,38 @@ function ComponentWrap(props) {
         showCode
         && (
           <div className="component-wrap-code">
-            {`
-              import React from 'react';
-              import ReactMarkDown from 'react-markdown';
-              
-              function ComponentWrap(props) {
-                const { module: Module, readme } = props;
-              
-                return (
-                  <div className="component-wrap">
-                    <Module />
-                    <div className="component-wrap-line">
-                      <div className="component-wrap-action">
-                        <span>复制代码</span>
-                        <span>显示代码</span>
-                      </div>
-                    </div>
-                    <div className="component-wrap-code">
-                      code
-                    </div>
-                    <ReactMarkDown source={readme} />
-                  </div>
-                )
-              }
-              
-              export default ComponentWrap;
-              
-            `}
+            <MarkDown source={
+`
+    import React from 'react';
+    import ReactMarkDown from 'react-markdown';
+
+    function ComponentWrap(props) {
+      const { module: Module, readme } = props;
+
+      return (
+        <div className="component-wrap">
+          <Module />
+          <div className="component-wrap-line">
+            <div className="component-wrap-action">
+              <span>复制代码</span>
+              <span>显示代码</span>
+            </div>
+          </div>
+          <div className="component-wrap-code">
+            code
+          </div>
+          <ReactMarkDown source={readme} />
+        </div>
+      )
+    }
+
+    export default ComponentWrap;
+`} />
           </div>
         )
       }
       
-      <ReactMarkDown source={readme} />
+      <MarkDown source={readme} />
     </div>
   )
 }

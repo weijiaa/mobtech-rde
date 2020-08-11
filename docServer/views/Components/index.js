@@ -5,6 +5,7 @@ import './index.less';
 
 const dirTree = importDir(require.context( '../../../src/components', true, /\.(md|jsx?)$/));
 const comps = [];
+console.log(dirTree);
 
 Object.keys(dirTree).forEach(key => {
   if(dirTree[key].demo === undefined) {
@@ -23,9 +24,11 @@ Object.keys(dirTree).forEach(key => {
   demoKeys.forEach(moduleName => {
     const module = comp.demo[`${moduleName}.js`]?.default;
     const readme = comp.demo[`${moduleName}.md`]?.default;
+    const path = comp.demo[`${moduleName}.js`]?.path;
 
     demoList.push({
       name: moduleName,
+      path,
       module,
       readme
     })
@@ -39,7 +42,7 @@ Object.keys(dirTree).forEach(key => {
   })
 });
 
-console.log(comps)
+console.log(comps);
 
 function Components() {
   const [active, setActive] = useState(0);
@@ -58,18 +61,6 @@ function Components() {
       <div className="app-components-right">
         { <MarkDown source={compReadme}/> }
         { <MarkDown source="## 代码演示"/> }
-        {
-          demoList.map(demo => {
-            const { module, readme } = demo;
-
-            return (
-              <ComponentWrap
-                module={module}
-                readme={readme}
-              />
-            )
-          })
-        }
         {
           demoList.map(demo => {
             const { module, readme } = demo;
