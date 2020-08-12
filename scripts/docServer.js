@@ -10,22 +10,22 @@ const docConfig = require('../doc.config');
 const devServer = webpackDevConfig.devServer;
 const { getIPAdress } = require('../utils');
 
-const componentsPaths = (docConfig.components || []).map(p => path.resolve('./', p));
+const componentsPath = path.resolve(docConfig.components || '');
 
 webpackDevConfig.plugins.push(
   new webpack.DefinePlugin({
-    COMPONENTS_PATHS: JSON.stringify(componentsPaths)
+    COMPONENTS_PATHS: JSON.stringify(componentsPath)
   })
 );
 
 webpackDevConfig.plugins.push(
   new CopyWebpackPlugin(
-    componentsPaths.map(p => (
+    [
       {
-        from: p,
-        to: p.split('/').pop()
+        from: componentsPath,
+        to: componentsPath.split('/').pop()
       }
-    ))
+    ]
   )
 );
 

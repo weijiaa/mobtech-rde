@@ -17,9 +17,10 @@ function MarkDown(props) {
       sanitize: true,
       smartLists: true,
       smartypants: false,
+      silent: true,
       highlight: function(code) {
-          return hljs.highlightAuto(code).value;
-      },
+        return hljs.highlightAuto(code).value;
+      }
     });
 
     setContent(marked(source))
@@ -27,7 +28,7 @@ function MarkDown(props) {
 
   return (
     <div className="markdown-wrap">
-      <div  dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div dangerouslySetInnerHTML={{ __html: content }}></div>
     </div>
   )
 }
