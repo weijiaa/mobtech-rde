@@ -36,13 +36,13 @@ function ajaxGetFile(path) {
 
     xhr.open('GET', path, true);
     xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4){
-            if(xhr.status === 200 || xhr.status === 304){
-              reslove(xhr.responseText);
-            } else {
-              reslove('');
-            }
+      if(xhr.readyState === 4){
+        if(xhr.status === 200 || xhr.status === 304){
+          reslove(xhr.responseText);
+        } else {
+          reslove('');
         }
+      }
     }
 
     xhr.send();

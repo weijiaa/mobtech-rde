@@ -4,7 +4,7 @@ import hljs from 'highlight.js';
 import './index.less';
 
 function MarkDown(props) {
-  const { source } = props;
+  const { source='' } = props;
   const [content, setContent] = useState('');
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function MarkDown(props) {
     });
 
     setContent(marked(source))
-  }, [])
+  }, [source])
 
   return (
     <div className="markdown-wrap">
