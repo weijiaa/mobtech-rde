@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MarkDown } from '../index';
+import { MarkDown, Code } from '../index';
 import { ajaxGetFile } from '../../utils';
 
 function ComponentWrap(props) {
@@ -41,7 +41,7 @@ function ComponentWrap(props) {
         showCode
         && (
           <div className="component-wrap-code">
-            <MarkDown source={'```\n' + code + '\n```'} />
+            <Code code={code} />
           </div>
         )
       }

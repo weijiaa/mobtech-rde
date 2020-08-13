@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { SideMenu, ComponentWrap, MarkDown } from '../../components'
-import { importDir, ajaxGetFile } from '../../utils';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import SideMenuRoute from './SideMenuRoute';
+import ComponentDoc from './ComponentDoc';
+import Overview from './Overview';
+import { importDir } from '../../utils';
 import './index.less';
 
 const dirTree = importDir(require.context(COMPONENTS_PATHS, true, /\.(md|jsx?)$/), COMPONENTS_PATHS);
@@ -42,36 +45,30 @@ Object.keys(dirTree).forEach(key => {
 });
 
 function Components() {
-  const [active, setActive] = useState(0);
-  const { demoList, readme } = comps[active];
-  const [compReadme, apiReadme] = readme.split('## API');
 
   return (
     <div className="app-components">
       <div className="app-components-left">
-        <SideMenu active={active} onChange={v => setActive(v)}>
-          {
-            comps.map((item, idx) => <SideMenu.Item value={idx} label={item.name} />)
-          }
-        </SideMenu>
+        <SideMenuRoute router={comps} />
       </div>
       <div className="app-components-right">
-        { <MarkDown source={compReadme}/> }
-        { <MarkDown source="## 代码演示"/> }
-        {
-          demoList.map(demo => {
-            const { module, readme, filePath } = demo;
+        <Switch>
+          <Route exact path={'/components/overview'} ><Overview /></Route>
+          {
+            comps.map((comp, idx) => {
+              const { demoList, readme } = comps[idx];
 
-            return (
-              <ComponentWrap
-                module={module}
-                readme={readme}
-                codePath={filePath}
-              />
-            )
-          })
-        }
-        { <MarkDown source={`## API ${apiReadme}`}/> }
+              return (
+                <Route
+                  exact
+                  path={'/components/'+comp.name}
+                  component={() => <ComponentDoc demoList={demoList} readme={readme} />}
+                />
+              );
+            })
+          }
+          <Route exact path={'/components/:other'} ><Overview /></Route>
+        </Switch>
       </div>
     </div>
   )

@@ -11,13 +11,19 @@
     empty-cells: show;
     border-collapse: collapse;
     border-spacing: 0;
+    tbody {
+      tr:hover {
+        background: rgba(60,90,100,.04);
+      }
+    }
     th {
       padding-top: 14px;
       padding: 12px;
       border-width: 0 0 2px;
       border-bottom-style: solid;
       border-color: #f0f0f0;
-      color: #5c6b77;
+      color: #333;
+      font-size: 15px;
       font-weight: 500;
       white-space: nowrap;
       text-align: left;
@@ -36,7 +42,7 @@
     margin: 0 0 10px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #abb2bf;
+    color: #333;
     background: #282c34;
     word-break: break-all;
     word-wrap: break-word;
@@ -52,7 +58,7 @@
   p > code:not([class]) {
     padding: 2px 4px;
     font-size: 90%;
-    color: #c7254e;
+    color: #009A9E;
     background-color: #f9f2f4;
     border-radius: 4px;
   }

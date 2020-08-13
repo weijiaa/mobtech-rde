@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import './index.less';
+import 'highlight.js/styles/github.css';
 
 function MarkDown(props) {
   const { source='' } = props;

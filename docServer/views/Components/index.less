@@ -14,5 +14,12 @@
     overflow-y: auto;
     padding-left: 60px;
     padding-right: 60px;
+
+    // 某些原因导致padding-bottom和margin-bottom失效
+    &::after {
+      display: inline-block;
+      height: 40px;
+      content: '';
+    }
   }
 }
