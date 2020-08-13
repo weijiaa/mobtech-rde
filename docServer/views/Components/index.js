@@ -1,12 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import SideMenuRoute from './SideMenuRoute';
 import ComponentDoc from './ComponentDoc';
 import Overview from './Overview';
 import { importDir } from '../../utils';
 import './index.less';
 
-const dirTree = importDir(require.context(COMPONENTS_PATHS, true, /\.(md|jsx?)$/), COMPONENTS_PATHS);
+const dirTree = COMPONENTS_PATHS ? importDir(require.context(COMPONENTS_PATHS || '', !!COMPONENTS_PATHS, /\.(md|jsx?)$/), COMPONENTS_PATHS) : {};
 const comps = [];
 
 Object.keys(dirTree).forEach(key => {
@@ -53,7 +53,7 @@ function Components() {
       </div>
       <div className="app-components-right">
         <Switch>
-          <Route exact path={'/components/overview'} ><Overview /></Route>
+          <Route exact path={'/components/overview'} component={() => <Overview comps={comps || []} />} />
           {
             comps.map((comp, idx) => {
               const { demoList, readme } = comps[idx];
@@ -67,7 +67,7 @@ function Components() {
               );
             })
           }
-          <Route exact path={'/components/:other'} ><Overview /></Route>
+          <Redirect from="/components" to="/components/overview" />
         </Switch>
       </div>
     </div>

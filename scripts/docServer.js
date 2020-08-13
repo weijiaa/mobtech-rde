@@ -6,11 +6,20 @@ const webpackDevServer = require('webpack-dev-server');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpackDevConfig = require('../config/webpack.dev');
-const docConfig = require('../doc.config');
-const devServer = webpackDevConfig.devServer;
 const { getIPAdress } = require('../utils');
 
-const componentsPath = path.resolve(docConfig.components || '');
+const { components } = (function () {
+  try {
+    return require('../.docrc');
+  } catch (error) {
+    return {};
+  }
+})();
+
+
+const devServer = webpackDevConfig.devServer;
+
+const componentsPath = components && path.resolve(components);
 
 webpackDevConfig.plugins.push(
   new webpack.DefinePlugin({
@@ -20,16 +29,16 @@ webpackDevConfig.plugins.push(
 
 webpackDevConfig.plugins.push(
   new CopyWebpackPlugin(
-    [
-      {
-        from: componentsPath,
-        to: componentsPath.split('/').pop()
-      }
-    ]
+    componentsPath
+    ? [
+        {
+          from: componentsPath,
+          to: componentsPath.split('/').pop()
+        }
+      ]
+    : []
   )
 );
-
-console.log(docConfig.components);
 
 webpackDevConfig.entry = {
   main: path.resolve(__dirname, '../docServer/main.js')

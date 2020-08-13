@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Link, withRouter, Switch, Route } from 'react-router-dom';
+import { Link, withRouter, Switch, Route, Redirect} from 'react-router-dom';
 import { HeadMenu } from '../components';
 import router from '../router';
 import './App.less';
@@ -29,16 +29,18 @@ function App(props) {
       <div className="app-head">
         <HeadMenuRoute active={pathname.split('/')[1]}/>
       </div>
-      <Suspense fallback={<span />}>
-        <Switch>
-          {
-            router.map(route => (
-              <Route path={'/'+route.path} component={route.component} />
-            ))
-          }
-          <Route path="*" component={router[0].component} />
-        </Switch>
-      </Suspense>
+      <div className="app-content">
+        <Suspense fallback={<span />}>
+          <Switch>
+            {
+              router.map(route => (
+                <Route path={'/'+route.path} component={route.component} />
+              ))
+            }
+            <Redirect from="/" to="/components/overview" />
+          </Switch>
+        </Suspense>
+      </div>
     </>
   )
 }

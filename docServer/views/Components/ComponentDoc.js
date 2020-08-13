@@ -3,7 +3,7 @@ import { ComponentWrap, MarkDown } from '../../components'
 
 function ComponentDoc(props) {
   const {readme, demoList} = props;
-  const [compReadme, apiReadme] = readme.split('## API');
+  const [compReadme, apiReadme] = readme?.split('## API') || [];
 
   return (
     <>
@@ -22,7 +22,7 @@ function ComponentDoc(props) {
           )
         })
       }
-      { <MarkDown source={`## API ${apiReadme}`}/> }
+      { apiReadme && <MarkDown source={`## API ${apiReadme}`}/> }
     </>
   )
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { MarkDown } from '../../components'
-import md from './index.md';
+import md from '../../../README.md';
 
 function Guide() {
 
   return (
     <div style={{width: 1280, margin: '0 auto'}}>
-      <MarkDown source={md} />
+        <MarkDown source={md} />
     </div>
   )
 }
