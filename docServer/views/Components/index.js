@@ -28,7 +28,7 @@ Object.keys(dirTree).forEach(key => {
     const readme = comp.demo[`${moduleName}.md`]?.default;
     const filePath = comp.demo[`${moduleName}.js`]?.path;
 
-    demoList.push({
+    module && demoList.push({
       name: moduleName,
       filePath,
       module,
@@ -36,13 +36,16 @@ Object.keys(dirTree).forEach(key => {
     })
   });
 
-  comps.push({
+   comps.push({
     name,
     demoList,
     module,
     readme
   })
 });
+
+console.log(comps)
+
 
 function Components() {
 
